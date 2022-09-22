@@ -1,4 +1,4 @@
-import Tabs from "./ui/Tabs"
+import Tabs from "./ui/Tabs/Tabs"
 import { createSignal } from "solid-js";
 import { Feed } from "../utils/types";
 import { fetchData } from "../utils/WebClient";
