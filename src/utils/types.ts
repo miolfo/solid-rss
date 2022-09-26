@@ -3,3 +3,10 @@ export interface Feed {
     name: string,
     lastUpdated?: string
 }
+
+export interface FeedItem {
+    title: string,
+    description: string,
+    link: string
+    pubDate: string
+}
