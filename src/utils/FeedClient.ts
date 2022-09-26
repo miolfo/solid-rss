@@ -11,7 +11,7 @@ export const getAllFeeds = async (): Promise<Feed[]> => {
 }
 
 export const getFeedItems = async (feedId: number, count: number, page: number): Promise<FeedItem[]> => {
-    return rssGet(`/api/v1/feed/${feedId}/items/`)
+    return rssGet(`/api/v1/feed/${feedId}/items/?page=${page}&count=${count}`)
         .then((res) => {
             return res.json();
         }).then((json) => {
