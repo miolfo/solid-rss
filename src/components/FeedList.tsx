@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For } from "solid-js"
+import { createEffect, createSignal } from "solid-js"
 import { getFeedItems } from "../utils/FeedClient"
 import { FeedItem } from "../utils/types"
 import { fetchData } from "../utils/WebClient"

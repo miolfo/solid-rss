@@ -3,7 +3,6 @@ import { createSignal } from "solid-js";
 import { Feed } from "../utils/types";
 import { fetchData } from "../utils/WebClient";
 import { getAllFeeds } from "../utils/FeedClient";
-import Tab from "./ui/Tabs/Tab";
 import FeedList from "./FeedList";
 
 const FeedTabs = () => {
@@ -12,7 +11,7 @@ const FeedTabs = () => {
     fetchData(getAllFeeds, setTabs)
 
     return <Tabs tabs={tabs().map((feed) => {
-        return { label: feed.name, id: feed.id, content: <Tab> <FeedList feedId={feed.id}/> </Tab> }
+        return { label: feed.name, id: feed.id, content: <FeedList feedId={feed.id}/> }
     })}/>
 }
 
