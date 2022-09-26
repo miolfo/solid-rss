@@ -1,4 +1,5 @@
-import { createSignal, For, JSX } from "solid-js"
+import { Link } from "@solidjs/router"
+import { createEffect, createSignal, For, JSX } from "solid-js"
 
 
 interface TabProps {
@@ -8,22 +9,25 @@ interface TabProps {
 }
 
 interface TabsParams {
-    tabs: TabProps[]
+    tabs: TabProps[],
+    active: number
 }
 
 const Tabs = (props: TabsParams) => {
 
     const [active, setActive] = createSignal<number | undefined>(undefined)
-
-    const onClickTab = (id: number) => {
-        setActive(id === active() ? undefined : id)
-    }
+    createEffect(() => {
+        setActive(Number(props.active))
+    })
+    //TODO: Link url as prop to maintain reusability for tabs!
     return (
         <div class="container w-75">
             <ul class="nav nav-tabs mt-3 mb-3">
                 <For each={props.tabs}>{(item) =>
                     <li class="nav-item">
-                        <a onclick={() => onClickTab(item.id)} class={`nav-link ${item.id === active() ? 'active' : ''}`} href="#">{item.label}</a>
+                        <Link class={`nav-link ${item.id === active() ? 'active' : ''}`} href={`/feed/${item.id}`}>
+                            {item.label}
+                        </Link>
                     </li>
                 }
                 </For>
