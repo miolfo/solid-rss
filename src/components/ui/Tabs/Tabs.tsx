@@ -25,7 +25,7 @@ const Tabs = (props: TabsParams) => {
             <div class={styles.tabsContainer}>
                 <For each={props.tabs}>{(item) => <button
                     onclick={() => onClickTab(item.id)}
-                    class={`btn btn-default ${item.id === active() ? 'active' : ''}`}>
+                    class={`btn btn-outline-dark ${item.id === active() ? 'active' : ''}`}>
                     {item.label}
                 </button>}
                 </For>

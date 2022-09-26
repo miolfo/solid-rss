@@ -3,6 +3,8 @@ import { getFeedItems } from "../utils/FeedClient"
 import { FeedItem } from "../utils/types"
 import { fetchData } from "../utils/WebClient"
 import FeedEntry from "./FeedEntry"
+import Item from "./ui/ItemList/Item"
+import ItemList from "./ui/ItemList/ItemList"
 
 interface FeedListProps {
     feedId: number
@@ -14,9 +16,9 @@ const FeedList = (props: FeedListProps) => {
     fetchData(() => getFeedItems(props.feedId, 25, 0), setFeedItems)
 
     return (
-        <For each={feedItems()}>
-            {(item) => <FeedEntry feedItem={item} />}
-        </For>
+        <div class="container w-75">
+            <ItemList items={feedItems().map((feedItem) => <Item> <FeedEntry feedItem={feedItem}/> </Item>)}/>
+        </div>
     )
 }
 
