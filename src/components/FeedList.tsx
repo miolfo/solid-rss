@@ -1,4 +1,5 @@
-import { createEffect, createSignal } from "solid-js"
+import { useSearchParams } from "@solidjs/router"
+import { createEffect, createSignal, Setter } from "solid-js"
 import { getFeedItems } from "../utils/FeedClient"
 import { FeedItem } from "../utils/types"
 import { fetchData } from "../utils/WebClient"
@@ -13,7 +14,13 @@ interface FeedListProps {
 
 const FeedList = (props: FeedListProps) => {
     const [feedItems, setFeedItems] = createSignal<FeedItem[]>([])
-    const [page, setPage] = createSignal(0)
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [page, setPage] = createSignal(searchParams.page ? Number(searchParams.page) - 1 : 0)
+
+    const setPageAndParam = (val: number) => {
+        setSearchParams({page: val + 1})
+        setPage(val)
+    }
     
     createEffect(() => {
         fetchData(() => getFeedItems(props.feedId, 8, page()), setFeedItems)
@@ -22,7 +29,7 @@ const FeedList = (props: FeedListProps) => {
     return (
         <div class="container w-75">
             <ItemList items={feedItems().map((feedItem) => <Item> <FeedEntry feedItem={feedItem}/> </Item>)}/>
-            <Pagination currentPage={page} setPage={setPage} />
+            <Pagination currentPage={page} setPage={setPageAndParam} />
         </div>
     )
 }

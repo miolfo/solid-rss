@@ -19,14 +19,14 @@ const Tabs = (props: TabsParams) => {
     createEffect(() => {
         setActive(Number(props.active))
     })
-    //TODO: Link url as prop to maintain reusability for tabs!
+    //TODO: Maybe pass nav-item content as a prop for potential reusability? If component is needed elsewhere at some point
     return (
         <div class="container w-75">
             <ul class="nav nav-tabs mt-3 mb-3">
-                <For each={props.tabs}>{(item) =>
+                <For each={props.tabs}>{(tab) =>
                     <li class="nav-item">
-                        <Link class={`nav-link ${item.id === active() ? 'active' : ''}`} href={`/feed/${item.id}`}>
-                            {item.label}
+                        <Link class={`nav-link ${tab.id === active() ? 'active' : ''}`} href={`/feed/${tab.id}`}>
+                            {tab.label}
                         </Link>
                     </li>
                 }

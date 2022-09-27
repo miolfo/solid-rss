@@ -1,11 +1,12 @@
-import { Accessor, Setter } from "solid-js"
+import { Accessor } from "solid-js"
 
 interface PaginationProps {
-    setPage: Setter<number>
+    setPage: (val: number) => void
     currentPage: Accessor<number>
 }
 
 const Pagination = (props: PaginationProps) => {
+
     const onClick = (val: number) => {
         props.setPage(val)
     }
