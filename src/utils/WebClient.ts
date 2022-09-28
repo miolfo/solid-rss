@@ -3,13 +3,23 @@ export const fetchData = <T>(fn: () => Promise<T>, setData: (data: T) => void) =
 }
 
 export const rssGet = (url: string) => {
-    //TODO: Api key should be stored somewhere in local storage so user has to set it manually
     return fetch(url,
     {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'API-KEY': import.meta.env.VITE_API_KEY
+            'API-KEY': localStorage.getItem("apiKey") ?? ''
         }
     })
+}
+
+export const testApiKey = (apiKey: string): Promise<boolean> => {
+
+    return fetch("/api/v1/feed/", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-KEY': apiKey
+        }
+    }).then((res) => res.ok)
 }

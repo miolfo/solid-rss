@@ -9,9 +9,7 @@ const App: Component = () => {
     <ApiKeyHandler>
       <div>
         <Routes>
-          <Route path="/">
-            <Navigate href="/feed"/>
-          </Route>
+          <Route path="/" element={<Navigate href="/feed"/>}/>
           <Route path="/feed/:id?" component={FeedTabs} />
         </Routes>
       </div>
