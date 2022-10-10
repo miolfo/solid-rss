@@ -1,10 +1,7 @@
-import { JSX } from "solid-js/jsx-runtime"
+import { ParentComponent, ParentProps } from "solid-js"
 import styles from './Item.module.scss'
-interface ItemProps {
-    children: JSX.Element
-}
 
-const Item = (props: ItemProps) => {
+const Item: ParentComponent = (props: ParentProps) => {
     return (
         <li class={styles.item}>
             {props.children}

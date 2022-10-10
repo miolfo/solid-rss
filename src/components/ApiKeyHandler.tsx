@@ -1,11 +1,7 @@
-import { createSignal, JSX, Setter, Show } from "solid-js"
+import { createSignal, ParentComponent, Setter, Show } from "solid-js"
 import { testApiKey } from "../utils/WebClient"
 import Card from "./ui/Card/Card"
 import Input from "./ui/Input/Input"
-
-interface ApiKeyHandlerProps {
-    children: JSX.Element
-}
 
 interface ApiKeyInputProps {
     setApiKey: Setter<string>
@@ -46,7 +42,7 @@ const ApiKeyInput = (props: ApiKeyInputProps) => {
     )
 }
 
-const ApiKeyHandler = (props: ApiKeyHandlerProps) => {
+const ApiKeyHandler: ParentComponent = (props) => {
     const [apiKey, setApiKey] = createSignal<string | null>(localStorage.getItem('apiKey'))
 
     return (

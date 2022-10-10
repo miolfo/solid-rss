@@ -1,12 +1,11 @@
-import { JSX, Show } from "solid-js"
+import { ParentComponent, ParentProps, Show } from "solid-js"
 
 interface CardProps {
     title?: string
     cardText?: string
-    children?: JSX.Element
 }
 
-const Card = (props: CardProps) => {
+const Card: ParentComponent<CardProps> = (props: ParentProps<CardProps>) => {
     return (
         <div class="card" style="width: 18rem;">
             <div class="card-body">

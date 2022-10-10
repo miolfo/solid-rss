@@ -1,7 +1,7 @@
 const Settings = () => {
     return (
         <div>
-            Here be Settings
+            Generic settings will be here
         </div>
     )
 }
