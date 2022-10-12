@@ -1,5 +1,6 @@
 import { Link } from "@solidjs/router"
 import { createEffect, createSignal, For, JSX } from "solid-js"
+import PencilIcon from "../icons/PencilIcon"
 
 
 interface TabProps {
@@ -27,6 +28,11 @@ const Tabs = (props: TabsParams) => {
                     <li class="nav-item">
                         <Link class={`nav-link ${tab.id === active() ? 'active' : ''}`} href={`/feed/${tab.id}`}>
                             {tab.label}
+                            <span style={{"margin-left": "1em"}}>
+                                <Link href={`/feed/${tab.id}/settings`}>
+                                    <PencilIcon />
+                                </Link>
+                            </span>
                         </Link>
                     </li>
                 }
