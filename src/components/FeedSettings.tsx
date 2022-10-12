@@ -1,15 +1,12 @@
-import { useParams } from "@solidjs/router";
+import { useSearchParams } from "@solidjs/router";
 import { Component } from "solid-js"
 
 const FeedSettings: Component = () => {
-    const id: string | undefined = useParams().id
-    let feedId = undefined
-    if(id) {
-        feedId = Number(id)
-    } 
+    const [searchParams] = useSearchParams()
+    const id = Number(searchParams.id)
     return (
         <div>
-            Single feeds settings, or new feed settings {feedId}
+            Single feeds settings, or new feed settings {id}
         </div>
     )
 }
